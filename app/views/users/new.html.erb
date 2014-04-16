@@ -1,0 +1,11 @@
+<h1>Join Trotter today.</h1>
+<%= form_for @user do |f| %>
+  <%= @user.errors.full_messages.first if @user.errors.any? %>
+  <%= f.text_field :name, placeholder: "Full name" %>
+  <%= f.text_field :email, placeholder: "Email" %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+  <%= f.text_field :username, placeholder: "Username" %>
+  <%= f.submit "Sign up for Trotter" %>
+<% end %>
+</div>
