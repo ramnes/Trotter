@@ -1,0 +1,2 @@
+module TrottsHelper
+end

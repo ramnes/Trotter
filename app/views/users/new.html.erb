@@ -1,11 +1,16 @@
 <h1>Join Trotter today.</h1>
 <%= form_for @user do |f| %>
-  <%= @user.errors.full_messages.first if @user.errors.any? %>
+  <% if @user.errors.any? %>
+     <%= content_tag :div, @user.errors.full_messages.first, class: "flash error" %>
+  <% end %>
   <%= f.text_field :name, placeholder: "Full name" %>
   <%= f.text_field :email, placeholder: "Email" %>
   <%= f.password_field :password, placeholder: "Password" %>
   <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
   <%= f.text_field :username, placeholder: "Username" %>
-  <%= f.submit "Sign up for Trotter" %>
+  <%= f.submit "Create my account" %>
 <% end %>
+<div id="disclaimer">
+  Note: Others will be able to find you by name, username or email. Your email
+  will not be shown publicly. You can change your privacy settings at any time.
 </div>

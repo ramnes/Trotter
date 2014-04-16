@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Trotter</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <div class="wrap">Trotter</div>
-  </header>
-  <div id="content">
+  <head>
+    <link rel="stylesheet/less" href="/style.less">
+    <script src="/less.js"></script>
+  </head>
+  <body>
+    <div id="topbar">
+      <img src="/logo.png" height="42" width="42" />
+    </div>
     <div class="wrap">
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "flash #{name}" %>
+      <% flash.each do |name, message| %>
+	<%= content_tag :div, message, class: "flash #{name}" %>
       <% end %>
       <%= yield %>
     </div>
-  </div>
-  <footer>
-    <div class="wrap">Trotter, a RoR Twitter clone made by Guillaume Gelin (284400)</div>
-  </footer>
-</body>
+    <div id="bottombar">
+      Trotter is a Twitter clone made with Ruby on Rails and passion by Guillaume Gelin
+  </body>
 </html>
