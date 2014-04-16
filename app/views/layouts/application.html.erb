@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header>
+    <div class="wrap">Trotter</div>
+  </header>
+  <div id="content">
+    <div class="wrap">
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "flash #{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">Trotter, a RoR Twitter clone made by Guillaume Gelin (284400)</div>
+  </footer>
 </body>
 </html>
