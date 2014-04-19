@@ -1,4 +1,10 @@
-<form>
-  <h1>Compose new Trott</h1>
-  <input type="submit" value="Trott">
+<div id="left">
+  <div id="profile">
+  </div>
+  <div id="compose">
+    <%= form_for @user do |f| %>
+      <%= f.text_area :background_url, placeholder: "Compose new trott..." %>
+      <%= f.submit '  Trott' %>
+    <% end %>
+  </div>
 </div>

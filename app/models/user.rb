@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :username,
   :password, :password_confirmation,
   :avatar_url, :background_url
+  has_many :trotts
 
   validates :email, uniqueness: true, presence: true,
   format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}

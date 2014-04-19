@@ -2,7 +2,7 @@
 @border-color: #ccc;
 
 body {
-    margin-top: 80px; 
+    margin-top: 80px;
     padding: 0;
     z-index: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -40,7 +40,32 @@ input[type="submit"] {
     background-repeat: repeat-x;
     background-image: linear-gradient(#ffec46, #f09600);
     background-position: 0 0;
-    border-color: #ed9200
+    border-color: #ed9200;
+}
+
+#compose {
+    width: 412px;
+    input[type="submit"] {
+	width: 100px;
+	float: right;
+	background-repeat: no-repeat;
+	background-image: url('/send.png'), linear-gradient(#ffec46, #f09600);
+    }
+}
+
+textarea {
+    border-radius: 5px;
+    width: 400px;
+    height: 50px;
+    border: 1px solid @border-color;
+    padding-left: 10px;
+    margin: 10px;
+    margin-bottom: 0;
+    outline: none;
+    font-size: 14px;
+    &:focus {
+	border-color: #56b4ef;
+    }
 }
 
 a {
@@ -62,7 +87,7 @@ a {
     border-bottom: 1px solid rgba(0,0,0,0.05);
     padding-left: 55px;
     z-index: 1000;
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 #bottombar {
@@ -105,6 +130,6 @@ a {
 }
 
 .wrap {
-    width: 20em;
+    width: 432px;
     margin: auto;
 }
