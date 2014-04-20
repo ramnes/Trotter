@@ -11,7 +11,9 @@ class TrottsController < ApplicationController
   end
 
   def show
+  end
+
+  def index
     @trotts = Trott.all
-    @user = _current_user
   end
 end

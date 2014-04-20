@@ -1,0 +1,44 @@
+<% if session[:current_user_id] %>
+  <div class="block" id="compose">
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message, class: "flash #{name}" %>
+    <% end %>
+    <%= form_for _current_user.trotts.new do |t| %>
+      <%= t.text_area :text, placeholder: "Compose new trott..." %>
+      <%= t.submit '  Trott' %>
+    <% end %>
+  </div>
+<% end %>
+<div class="block" id="trotts">
+  <h2>Trotts</h2>
+  <% if @trotts.size != 0 %>
+    <% @trotts.each do |t| %>
+      <% if t.text %>
+	<div class="trott">
+	  <% if t.user.avatar_url %>
+	    <img src=<%= t.user.avatar_url %>/>
+	  <% else %>
+	    <img src="/default-profile.png"/>
+	  <% end %>
+	  <div id="name">
+	    <a href="/users/<%= t.user_id %>"><b><%= t.user.name %></b> @<%= t.user.username %></a>
+	  </div>
+	  <div id="text">
+	    <%= t.text %>
+	  </div>
+	</div>
+      <% end %>
+    <% end %>
+    <div class="end">
+      <a href="#">
+	<img src="/logo-grey.png"/><br/>
+	Back to top ↑
+      </a>
+    </div>
+  <% else %>
+    <div class="end">
+      <img src="/logo-grey.png"/><br/>
+      Write the first trott!
+    </div>
+  <% end %>
+</div>
