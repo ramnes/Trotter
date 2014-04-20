@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      session[:user_id] = @user.id
       redirect_to @user, notice: "Welcome to Trotter, #{@user.name}!"
     else
       render "new"
@@ -14,5 +15,17 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def current_user
+    # if @user != nil
+    #   return @user
+    # end
+    return nil
+  end
+
+  def authenticate
+    find(:first, :conditions=>["username = ? AND password = ?",
+                               self.username, password])
   end
 end

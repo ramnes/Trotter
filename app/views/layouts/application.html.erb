@@ -7,6 +7,19 @@
   <body>
     <div id="topbar">
       <img src="/logo.png" height="42" width="42" />
+      <div id="current_user">
+	<% if session[:current_user_id] %>
+	  Logged as <b><%= link_to "@#{_current_user.username}",
+	  "/users/#{_current_user.id}" %> </b>
+	  (<%= link_to "logout", sessions_destroy_path %>)
+	<% else %>
+	  <%= form_tag sessions_create_path do %>
+            <%= text_field_tag :username, nil, placeholder: "Username" %>
+            <%= password_field_tag :password, nil,  placeholder: "Password" %>
+            <%= submit_tag "Login" %>
+	  <% end %>
+	<% end %>
+      </div>
     </div>
     <div class="wrap">
       <% flash.each do |name, message| %>

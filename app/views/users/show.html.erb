@@ -1,10 +1,12 @@
 <div id="left">
   <div id="profile">
   </div>
-  <div id="compose">
-    <%= form_for @user do |f| %>
-      <%= f.text_area :background_url, placeholder: "Compose new trott..." %>
-      <%= f.submit '  Trott' %>
-    <% end %>
-  </div>
+  <% if _current_user == @user %>
+    <div id="compose">
+      <%= form_for @user do |f| %>
+	<%= f.text_area :background_url, placeholder: "Compose new trott..." %>
+	<%= f.submit '  Trott' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
