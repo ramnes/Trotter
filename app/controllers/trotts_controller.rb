@@ -9,4 +9,9 @@ class TrottsController < ApplicationController
       redirect_to _current_user
     end
   end
+
+  def show
+    @trotts = Trott.all
+    @user = _current_user
+  end
 end
