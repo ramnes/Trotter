@@ -6,7 +6,7 @@
   </head>
   <body>
     <div id="topbar">
-      <img src="/logo.png" height="42" width="42" />
+      <%= link_to image_tag("/logo.png", size:"42x42", alt:"logo"), root_url %>
       <div id="current_user">
 	<% if session[:current_user_id] %>
 	  Logged as <b><%= link_to "@#{_current_user.username}",
@@ -22,12 +22,7 @@
       </div>
     </div>
     <div class="wrap">
-      <% flash.each do |name, message| %>
-	<%= content_tag :div, message, class: "flash #{name}" %>
-      <% end %>
       <%= yield %>
     </div>
-    <div id="bottombar">
-      Trotter is a Twitter clone made with Ruby on Rails and passion by Guillaume Gelin
   </body>
 </html>

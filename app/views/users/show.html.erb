@@ -1,11 +1,62 @@
-<div id="left">
-  <div id="profile">
+<div class="block" id="profile">
+  <% if @user.avatar_url %>
+    <img src=<%= @user.avatar_url %>>
+  <% else %>
+    <img src="/default-profile.png"/>
+  <% end %>
+  <h1><%= @user.name %></h1>
+  <h2>@<%= @user.username %></h2>
+  <span id="description"><%= @user.description %></span>
+  <span id="more"><%= @user.location %>
+    <% if @user.website %>
+      · <%= @user.website %>
+    <% end %>
+  </span>
+</div>
+<% if _current_user == @user %>
+  <div class="block" id="compose">
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message, class: "flash #{name}" %>
+    <% end %>
+    <%= form_for @user.trotts.new do |t| %>
+      <%= t.text_area :text, placeholder: "Compose new trott..." %>
+      <%= t.submit '  Trott' %>
+    <% end %>
   </div>
-  <% if _current_user == @user %>
-    <div id="compose">
-      <%= form_for @user do |f| %>
-	<%= f.text_area :background_url, placeholder: "Compose new trott..." %>
-	<%= f.submit '  Trott' %>
+<% end %>
+<div class="block" id="trotts">
+  <h2>Trotts</h2>
+  <% if @user.trotts.size != 0 %>
+    <% @user.trotts.each do |t| %>
+      <% if t.text %>
+	<div class="trott">
+	  <% if @user.avatar_url %>
+	    <img src=<%= @user.avatar_url %>/>
+	  <% else %>
+	    <img src="/default-profile.png"/>
+	  <% end %>
+	  <div id="name">
+	    <b><%= @user.name %></b> @<%= @user.username %>
+	  </div>
+	  <div id="text">
+	    <%= t.text %>
+	  </div>
+	</div>
+      <% end %>
+    <% end %>
+    <div class="end">
+      <a href="#">
+	<img src="/logo-grey.png"/><br/>
+	Back to top ↑
+      </a>
+    </div>
+  <% else %>
+    <div class="end">
+      <img src="/logo-grey.png"/><br/>
+      <% if _current_user == @user %>
+	Write your first trott!
+      <% else %>
+	@<%= @user.username %> hasn't trotted yet.
       <% end %>
     </div>
   <% end %>

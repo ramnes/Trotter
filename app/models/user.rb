@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :username,
+  attr_accessible :email, :name, :username, :description, :location, :website,
   :password, :password_confirmation,
   :avatar_url, :background_url
   has_many :trotts
