@@ -11,7 +11,7 @@
 	<% if session[:current_user_id] %>
 	  Logged as <b><%= link_to "@#{_current_user.username}",
 	  "/users/#{_current_user.id}" %> </b>
-	  (<%= link_to "logout", sessions_destroy_path %>)
+	   · <%= link_to "Logout", sessions_destroy_path %>
 	<% else %>
 	  <%= form_tag sessions_create_path do %>
             <%= text_field_tag :username, nil, placeholder: "Username" %>
